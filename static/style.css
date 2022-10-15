@@ -1,0 +1,16 @@
+td {
+    width: 23px;
+    height: 23px
+}
+
+div table {
+    margin: auto
+}
+
+div {
+    text-align: center
+}
+
+td, th {
+    border: 1px solid black;
+}

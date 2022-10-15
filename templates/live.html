@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+    <a href="{{ url_for('index') }}" class="btn btn-warning home">На главную страницу</a>
+    <div class="counter">{{ per.counter }}</div>
+    <a href="{{ url_for('live') }}" class="btn btn-info refresh">Обновить</a>
+    <table>
+        {% for i in width %}
+            <tr>
+                {% for j in height %}
+                    {% if per.world[i][j] == 1 %}
+                        <td class="cell living-cell" bgcolor="#008000"></td>
+                    {% elif per.world[i][j] == 0 and per.old_world[i][j] == 1 %}
+                        <td class="cell dead-cell" bgcolor="#FF0000"></td>
+                    {% else %}
+                        <td class="cell" bgcolor="#FFFFFF"></td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+    {% block scripts %}
+        <script>
+            setInterval (() => window.location.reload(), 3000);
+        </script>
+    {% endblock %}
+{% endblock %}
